@@ -35,13 +35,16 @@ for i in range(len(bored_num)):
 plyer2 = ""
 plyer1 = ""
 print("Hello to a tic tac toe game from ahmad alhadeed")
-print("press the number to place your {}".format(plyer1))
-
-plyer1 = str(input("plyer one chose \'x\' or \'o\' :"))
-if plyer1 == "x":
-    plyer2 = "o"
-else:
-    plyer2 = "x"
+print("press the number to place your x or o ")
+while True:
+    plyer1 = str(input("plyer one chose \'x\' or \'o\' :"))
+    if plyer1 == "x" or plyer1 == "o":
+        if plyer1 == "x":
+            plyer2 = "o"
+            break
+        else:
+            plyer2 = "x"
+            break
 
 print("plyer one chose \"{}\", and plyer two chose \"{}\"".format(plyer1, plyer2))
 
@@ -50,12 +53,15 @@ for i in range(len(bored_num)):
         if (i + 1)%3 == 0:
             print("")
 while True:
+    if bored_filled():
+        print("No one win !!!")
+        break
     print("press the number to place your {}".format(plyer1))
     index = int(input())
     bored[index-1] = plyer1
     for i in range(len(bored)):
         if "-" not in bored[i]:
-            print("[" + str(bored[i]) + "]" , end="-")
+            print("['" + str(bored[i]) + "']" , end="-")
             if (i + 1)%3 == 0:
                 print("")
         else:
@@ -65,12 +71,15 @@ while True:
     if win_game():
         print("plyer one win !!!!")
         break
+    if bored_filled():
+        print("No one win !!!")
+        break
     print("press the number to place your {}".format(plyer2))
     index = int(input())
     bored[index-1] = plyer2
     for i in range(len(bored)):
         if "-" not in bored[i]:
-            print("[" + str(bored[i]) + "]" , end="-")
+            print("['" + str(bored[i]) + "']" , end="-")
             if (i + 1)%3 == 0:
                 print("")
         else:
